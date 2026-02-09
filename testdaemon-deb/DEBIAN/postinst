@@ -1,0 +1,28 @@
+#!/bin/bash
+# postinst script for testdaemon
+
+set -e
+
+case "$1" in
+    configure)
+        # Reload systemd daemon to recognize the new service
+        systemctl daemon-reload
+
+        # Enable the service to start on boot (optional)
+        # systemctl enable testdaemon.service
+
+        echo "testdaemon has been installed successfully."
+        echo "To start the service, run: sudo systemctl start testdaemon"
+        echo "To enable auto-start on boot, run: sudo systemctl enable testdaemon"
+        ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

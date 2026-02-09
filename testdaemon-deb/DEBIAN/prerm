@@ -1,0 +1,30 @@
+#!/bin/bash
+# prerm script for testdaemon
+
+set -e
+
+case "$1" in
+    remove|upgrade|deconfigure)
+        # Stop the service if it's running
+        if systemctl is-active --quiet testdaemon.service; then
+            systemctl stop testdaemon.service
+            echo "testdaemon service stopped."
+        fi
+
+        # Disable the service
+        if systemctl is-enabled --quiet testdaemon.service 2>/dev/null; then
+            systemctl disable testdaemon.service
+            echo "testdaemon service disabled."
+        fi
+        ;;
+
+    failed-upgrade)
+        ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

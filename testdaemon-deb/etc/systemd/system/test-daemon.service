@@ -1,0 +1,30 @@
+[Unit]
+Description=Systemd Control Test Daemon
+# 네트워크 등이 준비된 후 실행 (일반적인 데몬 순서)
+After=network.target
+
+[Service]
+# 단순 스크립트 실행 방식
+Type=simple
+
+# 실행할 스크립트 경로 (설치 위치에 따라 수정 가능, 여기서는 /usr/local/bin 가정)
+# %N은 서비스 이름(testdaemon)을 인자로 전달함
+ExecStart=/usr/local/bin/test-daemon.sh %N
+
+# 루트 권한으로 실행 (명시)
+User=root
+Group=root
+
+# 종료 시그널 설정 (기본값이 SIGTERM이지만 명시적으로 지정)
+KillSignal=SIGTERM
+
+# 프로세스가 예상치 않게 죽었을 경우 5초 뒤 재시작
+Restart=on-failure
+RestartSec=5s
+
+# 로그 식별자
+SyslogIdentifier=testdaemon
+
+[Install]
+# 다중 사용자 모드(일반 부팅)에서 실행되도록 설정
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+Package: testdaemon
+Version: 1.0.0
+Section: admin
+Priority: optional
+Architecture: all
+Maintainer: Your Name <your.email@example.com>
+Description: Systemd Control Test Daemon
+ A harmless dummy daemon for testing systemd service control.
+ Uses minimal system resources (sleep loop) with no external dependencies.
+ Provides clear logging to systemd journal for start and shutdown events.
