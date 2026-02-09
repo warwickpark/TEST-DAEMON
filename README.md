@@ -189,7 +189,6 @@ sudo systemctl daemon-reload
 - systemd 서비스 제어 학습 및 테스트
 - 자동화 스크립트 개발 시 테스트용 더미 서비스
 - CI/CD 파이프라인에서 서비스 관리 테스트
-- 시스템 관리 교육 목적
 
 ## 주의사항
 
@@ -204,7 +203,7 @@ sudo systemctl daemon-reload
 
 ## 라이선스
 
-MIT License (또는 원하는 라이선스로 변경 가능)
+MIT License
 
 ## 기여
 
